@@ -1,6 +1,10 @@
-Our README file is currently lonely! :(
-tun
-ueoa
+Project Harmony
 
+University of Washington
+CSE 440 Au 2012
 
-testing! hi david~
+Team
+David Mailhot: Team Manager
+Jennifer Apacible: Design & Documentation
+Eric Oltean: Development
+Eve Yi Zhao: User Testing
