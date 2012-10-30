@@ -1,0 +1,147 @@
+/* primary color ADE3FF */
+/* secondary color 737AE8 */
+/* gray color E0E0E0 */ /*NEED 50 SHADES OF GRAY*/
+
+#menu {
+	position: fixed;
+	top: 0;
+	clear: both;
+}
+
+#menu > div {	
+	overflow: hidden;
+	opacity: 0.98;
+	background-color: #FFF;
+}
+
+#titlearea {
+	text-align: center;
+	padding: 100px 80px 100px 80px;
+	margin-top: 50px;
+	margin-bottom: 300px;
+}
+
+#titlearea img {
+	margin-left: 20px;
+	height: 120px;
+}
+
+/*70px*/
+#titlearea h1 {
+	font-family: 'Euphoria Script', cursive;
+	font-size: 60pt;
+	letter-spacing: 5pt;
+	vertical-align: bottom;
+	text-align: left;
+	padding: 30px 20px 15px 20px;
+	margin-right: 10px;
+	background-color: #EEE;
+	border-radius: 25px;
+}
+
+#titlearea h1 span#smalltext {
+	letter-spacing: 3pt;
+	margin-left: 15px;
+	margin-right: 10px;
+	font-size: 16pt;
+}
+
+#titlearea div.backlight {
+	position: absolute;
+	top: 220px;
+	left: 0;
+	width: 100%;
+	height: 300px;
+}
+
+#titlearea p {
+	font-family: Georgia;
+	letter-spacing: 1pt;
+	font-size: 20pt;
+	margin-top: 20px;
+}
+
+#prototype_wrap > * {
+	max-width: 100%;
+}
+
+#projectharmony_wrap h2 {
+	margin-bottom: 0px;
+}
+
+#projectharmony_wrap h4 {
+	margin-top: 30px;
+}
+
+.section {
+	padding: 30px 60px 60px 60px;
+	margin: 200px 0 200px 0;
+	clear: both;
+	overflow: hidden;
+	background-color: #EEE;
+	min-height: 50px;
+	border-radius: 50px;
+}
+
+.overhang {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 150px;
+background: -moz-linear-gradient(top,  rgba(224,224,224,1) 0%, rgba(188,226,246,0.45) 20%, rgba(173,227,255,0.41) 28%, rgba(173,227,255,0.13) 79%, rgba(173,227,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(224,224,224,1)), color-stop(20%,rgba(188,226,246,0.45)), color-stop(28%,rgba(173,227,255,0.41)), color-stop(79%,rgba(173,227,255,0.13)), color-stop(100%,rgba(173,227,255,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(188,226,246,0.45) 20%,rgba(173,227,255,0.41) 28%,rgba(173,227,255,0.13) 79%,rgba(173,227,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(188,226,246,0.45) 20%,rgba(173,227,255,0.41) 28%,rgba(173,227,255,0.13) 79%,rgba(173,227,255,0) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(224,224,224,1) 0%,rgba(188,226,246,0.45) 20%,rgba(173,227,255,0.41) 28%,rgba(173,227,255,0.13) 79%,rgba(173,227,255,0) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(224,224,224,1) 0%,rgba(188,226,246,0.45) 20%,rgba(173,227,255,0.41) 28%,rgba(173,227,255,0.13) 79%,rgba(173,227,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#00ade3ff',GradientType=0 ); /* IE6-9 */
+}
+
+
+.backlight {
+background: -moz-radial-gradient(center, ellipse cover,  rgba(173,227,255,0.33) 0%, rgba(173,227,255,0.33) 22%, rgba(173,227,255,0.13) 34%, rgba(173,227,255,0) 52%, rgba(173,227,255,0) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(173,227,255,0.33)), color-stop(22%,rgba(173,227,255,0.33)), color-stop(34%,rgba(173,227,255,0.13)), color-stop(52%,rgba(173,227,255,0)), color-stop(100%,rgba(173,227,255,0))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  rgba(173,227,255,0.33) 0%,rgba(173,227,255,0.33) 22%,rgba(173,227,255,0.13) 34%,rgba(173,227,255,0) 52%,rgba(173,227,255,0) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  rgba(173,227,255,0.33) 0%,rgba(173,227,255,0.33) 22%,rgba(173,227,255,0.13) 34%,rgba(173,227,255,0) 52%,rgba(173,227,255,0) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  rgba(173,227,255,0.33) 0%,rgba(173,227,255,0.33) 22%,rgba(173,227,255,0.13) 34%,rgba(173,227,255,0) 52%,rgba(173,227,255,0) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  rgba(173,227,255,0.33) 0%,rgba(173,227,255,0.33) 22%,rgba(173,227,255,0.13) 34%,rgba(173,227,255,0) 52%,rgba(173,227,255,0) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54ade3ff', endColorstr='#00ade3ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fade-in {
+	opacity:0;  /* make things invisible upon start */
+	-webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+	-moz-animation:fadeIn ease-in 1;
+	animation:fadeIn ease-in 1;
+
+	-webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+	-moz-animation-fill-mode:forwards;
+	animation-fill-mode:forwards;
+
+	-webkit-animation-duration:1s;
+	-moz-animation-duration:1s;
+	animation-duration:1s;
+}
+
+.fade-in.one {
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay: 1.2s;
+	animation-delay: 1.2s;
+}
+
+.fade-in.two {
+	-webkit-animation-delay: 2.4s;
+	-moz-animation-delay:2.4s;
+	animation-delay: 2.4s;
+}
+
+.fade-in.three {
+	-webkit-animation-delay: 2.6s;
+	-moz-animation-delay: 2.6s;
+	animation-delay: 2.6s;
+}
