@@ -73,6 +73,10 @@
 	margin-top: 30px;
 }
 
+#projectharmony_wrap .btn {
+    margin-left: 14px;
+}
+
 .section {
 	padding: 30px 60px 60px 60px;
 	margin: 200px 0 200px 0;
@@ -81,6 +85,15 @@
 	background-color: #EEE;
 	min-height: 50px;
 	border-radius: 50px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.inline {
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 .overhang {
