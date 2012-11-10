@@ -1,0 +1,64 @@
+body{background-color: #FFF; font-size: 14px; font-family: sans-serif; line-height:150%;}
+a{color:#737AE8; text-decoration: none;}
+#menu li:hover {border-color: #737AE8;}
+#menu li:hover a{color:#737AE8;}
+a:hover {color:#808080;}
+
+/* Safari */
+::selection {
+background: #808080;
+color: #ffffff;
+}
+/* Firefox */
+::-moz-selection {
+background: #ff5a5a;
+color: #ffffff;
+}
+
+.left {float: left;}
+.right {float: right}
+.clear {clear: both;}
+.last{margin-right: 0px;}
+.external {display: inline;}
+
+#description {padding: 24px; padding-top: 0px; height: auto; font-size: 12px; color: #808080; line-height: 24px; -moz-column-count:2; /* Firefox */ -webkit-column-count:2; /* Safari and Chrome */ column-count:2;}
+#description a{color:#FFF; text-decoration: none;}
+#description a:hover {color: #808080;}
+#content {background: black; color: white;}
+#content img {padding: 24px; padding-top: 0px;}
+
+#wrap{width:800px; margin: 20px auto;}
+#wrap.grid{background: url(../img/grid.png);}
+
+#menu ul {width:800px; height: 38px; background-color: #FFF; margin-top: 20px; margin-bottom: 20px; z-index: 10; *margin-left:-72px;}
+#menu li{width: 18%; margin-right: 1%; margin-left: 1%; border-top:1px dotted #808080; border-bottom: 1px dotted #808080; float: left;}
+#menu li:last-child {margin-right: 0%;}
+#menu li.odd{margin-right:0px;}
+
+#menu li a{color:#808080; cursor: pointer; margin-left: 8px; padding: 12px 0px 8px 0px; display:block}
+/* primary color ADE3FF */
+
+div.featured{width:800px; height: 468px; overflow: hidden; color:#FFF; margin-left: auto; margin-right: auto}
+
+div.project{width:191px; height: 192px; background-color: #333; float: left; margin-right: 12px; margin-bottom: 12px; cursor: pointer; /* *margin:4px; margin:4px\0/; */}
+div.project:nth-child(4n+4){margin-right: 0px;}
+div.project.odd{margin:0px;}
+div.project > div.overlay{width:191px; height:192px; background: url(../img/pattern.gif); position: absolute; display: none;}
+div.project > div.overlay h3, div.project > div.overlay h4{display: inline; background-color: #FFF; font-size: 13px; padding:7px; position: absolute;}
+.overlay h3 {top:12px; left:12px;}
+.overlay h4 {top:48px; left:12px; color:#808080;}
+
+/*#team_wrap h2 {font-size: 24px; color: #000; margin-bottom: 29px;}*/
+#team_wrap a{display: block; margin-bottom: 20px; height: 16px;}
+#team_wrap textarea {display: block; font-family: Arial, sans-serif; font-size: 12px; color: #808080; width: 368px; max-width: 368px; height: 190px; margin-top: 12px; padding: 12px; outline: none; border: 1px solid #808080;}
+
+#loader{display: none;}
+#ajaxload{margin:17px 392px;}
+
+#footer {clear: both; margin-top: 107px; margin-bottom: 36px; overflow: auto; width: 800px; border-top: 1px dotted #000; border-bottom: 1px dotted #000; padding:12px 0px 8px 0px;}
+#footer p {font-size: 12px; color: #808080;}
+
+
+.centeroftheworld {
+	margin: auto;
+}
