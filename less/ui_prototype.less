@@ -3,26 +3,51 @@
 CSS style sheet with Less syntax for the Project Harmony augmented reality user interface
 */
 
-.btn-circle {
-	.circular;
-    display: inline-block;
-	background-color: gray;
-	margin-right: 5%;
+body {
+	margin: 0;
+}
 
-	.circular(@radius: 50px) {
-		width: (@radius);
-		height: (@radius);
-		-webkit-border-radius: @radius;
-		-moz-border-radius: @radius;
-		-ms-border-radius: @radius;
-		-o-border-radius: @radius;
-		border-radius: @radius;
+#background {
+	img {
+		height: 100%;
+	}
+}
+
+#overlay {
+    position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	.glass {
+		background: gray;
+		opacity: 30%;
 	}
 
-}
-.btn-menu {
-    position: fixed;
-    bottom: 5%;
-    left: 5%;
-    width: 90%;
+	.btn-circle {
+		.circular;
+		overflow: hidden;
+		display: inline-block;
+		opacity: 80%;
+		background-color: gray;
+		margin-right: 5%;
+
+		.circular(@radius: 50px) {
+			width: (@radius);
+			height: (@radius);
+			-webkit-border-radius: @radius;
+			-moz-border-radius: @radius;
+			-ms-border-radius: @radius;
+			-o-border-radius: @radius;
+			border-radius: @radius;
+		}
+
+	}
+	.btn-menu {
+		position: absolute;
+		bottom: 5%;
+		left: 5%;
+		width: 90%;
+	}
 }
