@@ -3,51 +3,93 @@
 CSS style sheet with Less syntax for the Project Harmony augmented reality user interface
 */
 
+@baseiconsize: 80px;
+
 body {
 	margin: 0;
 }
 
 #background {
 	img {
-		height: 100%;
 	}
 }
 
 #overlay {
+	.fullscreen;
     position: fixed;
 	top: 0;
 	left: 0;
-	height: 100%;
-	width: 100%;
 
 	.glass {
-		background: gray;
-		opacity: 30%;
+		.fullscreen;
+		.opaque(0.1);
+	}
+
+	/* all screens are hidden by default */
+	.screen {
+		.fullscreen;
+		position: absolute;
+		bottom: -100%;
+	}
+	/* display this screen instead of hiding it */
+	.displaying {
+		bottom: 0 !important;
 	}
 
 	.btn-circle {
-		.circular;
+		.circular(@baseiconsize);
+		.opaque(0.8);
 		overflow: hidden;
 		display: inline-block;
-		opacity: 80%;
-		background-color: gray;
-		margin-right: 5%;
 
-		.circular(@radius: 50px) {
-			width: (@radius);
-			height: (@radius);
-			-webkit-border-radius: @radius;
-			-moz-border-radius: @radius;
-			-ms-border-radius: @radius;
-			-o-border-radius: @radius;
-			border-radius: @radius;
+		span {
+			.fullscreen;
 		}
-
+		span:hover {
+			background: gray;
+		}
 	}
 	.btn-menu {
 		position: absolute;
-		bottom: 5%;
-		left: 5%;
-		width: 90%;
+		bottom: 0;
+		text-align: center;
+		width: 100%;
+		.btn-circle {
+			margin: 3%;
+		}
 	}
+
+
+}
+
+.fullscreen() {
+	height: 100%;
+	width: 100%;
+	display: block;
+}
+
+.circular(@radius) {
+	width: (@radius);
+	height: (@radius);
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.opaque(@ratio) {
+	background: rgba(160,160,160,@ratio);
+}
+
+.opacity(@ratio) {
+	/* IE 9, 8, 7, 6, 5 */
+	@alpha: (@ratio * 100);
+	filter: alpha(opacity=@alpha);
+	/* Older than Firefox 0.9 */
+	-moz-opacity: @ratio;
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: @ratio;
+	/* Firefox 0.9+, Safari 2?, Chrome any? Opera 9+, IE 9+ */
+	opacity: @ratio;
 }
