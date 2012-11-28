@@ -5,6 +5,8 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 @baseiconsize: 80px;
 
+@import "font-awesome.less";
+
 body {
 	margin: 0;
 }
@@ -46,6 +48,8 @@ body {
 
 		span {
 			.fullscreen;
+			padding-top: 10px;
+			font-size: 40pt;
 		}
 		span:hover {
 			background: gray;
@@ -58,6 +62,13 @@ body {
 		width: 100%;
 		.btn-circle {
 			margin: 3%;
+		}
+		.btn-circle:first-child {
+			float:left;
+		}
+		.btn-circle:not(:first-child) {
+			position: relative;
+			right: @baseiconsize;
 		}
 	}
 
