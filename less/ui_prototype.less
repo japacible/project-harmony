@@ -5,6 +5,10 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 @baseiconsize: 80px;
 
+@color1_r: 172;
+@color1_g: 227;
+@color1_b: 255;
+
 @import "font-awesome.less";
 
 body {
@@ -42,7 +46,7 @@ body {
 
 	.btn-circle {
 		.circular(@baseiconsize);
-		.opaque(0.8);
+		.opaque(0.3);
 		overflow: hidden;
 		display: inline-block;
 
@@ -52,23 +56,22 @@ body {
 			font-size: 40pt;
 		}
 		span:hover {
-			background: gray;
+			.opaque(0.6);
 		}
 	}
 	.btn-menu {
 		position: absolute;
 		bottom: 0;
-		text-align: center;
 		width: 100%;
+		text-align: center;
 		.btn-circle {
 			margin: 3%;
 		}
 		.btn-circle:first-child {
-			float:left;
+			float: left;
 		}
-		.btn-circle:not(:first-child) {
-			position: relative;
-			right: @baseiconsize;
+		.btn-circle:last-child {
+			margin-right: @baseiconsize;
 		}
 	}
 
@@ -93,7 +96,7 @@ body {
 }
 
 .opaque(@ratio) {
-	background: rgba(160,160,160,@ratio);
+	background: rgba(@color1_r,@color1_g,@color1_b,@ratio);
 }
 
 .opacity(@ratio) {
