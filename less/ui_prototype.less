@@ -27,15 +27,15 @@ body {
 
 	/* all screens are hidden by default */
 	.screen {
+		.fullscreen;
+		.transition_screen;
 		position: absolute;
 		bottom: -100%;
 	}
 	/* display this screen instead of hiding it */
 	.displaying {
 		.fullscreen;
-		position: absolute;
-		bottom: 0;
-		.transition_screen(-100%,0%);
+		bottom: 0%;
 	}
 
 	.btn-circle {
@@ -68,6 +68,7 @@ body {
 	height: 100%;
 	width: 100%;
 	display: block;
+	margin: 0;
 }
 
 .circular(@radius) {
@@ -96,31 +97,10 @@ body {
 	opacity: @ratio;
 }
 
-.transition_screen(@start, @end) {
-	-webkit-animation: transition 0.5s ease-in-out;
-	-khtml-animation: transition 0.5s ease-in-out;
-	-moz-animation: transition 0.5s ease-in-out;
-	-ms-animation: transition 0.5s ease-in-out;
-	-o-animation: transition 0.5s ease-in-out;
-
-	@-webkit-keyframes transition {
-		0%{ bottom: @start; }
-		100% { bottom: @end; }
-	}
-	@-webkit-keyframes transition {
-		0%{ bottom: @start; }
-		100% { bottom: @end; }
-	}
-	@-webkit-keyframes transition {
-		0%{ bottom: @start; }
-		100% { bottom: @end; }
-	}
-	@-webkit-keyframes transition {
-		0%{ bottom: @start; }
-		100% { bottom: @end; }
-	}
-	@-webkit-keyframes transition {
-		0%{ bottom: @start; }
-		100% { bottom: @end; }
-	}
+.transition_screen() {
+	-webkit-transition: all 0.5s ease-in-out;
+	-khtml-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
 }

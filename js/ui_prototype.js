@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 
 function changeScreenTo(screenName) {
-	$(".displaying").removeClass("displaying");
-	$("#"+screenName).addClass("displaying");
+	var oldScreen = $(".displaying");
+	oldScreen.removeClass("displaying");
+	var newScreen = $("#"+screenName);
+	newScreen.addClass("displaying");
 }
