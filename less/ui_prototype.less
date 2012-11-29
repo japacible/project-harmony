@@ -3,7 +3,8 @@
 CSS style sheet with Less syntax for the Project Harmony augmented reality user interface
 */
 
-@baseiconsize: 80px;
+@buttonsize: 80px;
+@iconsize: 40pt;
 
 @color1_r: 172;
 @color1_g: 227;
@@ -22,8 +23,9 @@ body {
 
 #overlay {
 	.fullscreen;
+	height: 25%;
     position: fixed;
-	top: 0;
+	bottom: 0;
 	left: 0;
 
 	.glass {
@@ -44,8 +46,22 @@ body {
 		bottom: 0%;
 	}
 
+	.notification {
+		.rounded-corners(@buttonsize);
+		.opaque(0.4);
+		height: @buttonsize;
+		overflow: hidden;
+		display: inline-block;
+		padding: 20px;
+
+		span {
+			padding-top: 10px;
+			font-size: (@iconsize/2);
+		}
+	}
+
 	.btn-circle {
-		.circular(@baseiconsize);
+		.circular(@buttonsize);
 		.opaque(0.3);
 		overflow: hidden;
 		display: inline-block;
@@ -53,7 +69,7 @@ body {
 		span {
 			.fullscreen;
 			padding-top: 10px;
-			font-size: 40pt;
+			font-size: @iconsize;
 		}
 		span:hover {
 			.opaque(0.6);
@@ -64,17 +80,25 @@ body {
 		bottom: 0;
 		width: 100%;
 		text-align: center;
-		.btn-circle {
+
+		.btn-circle, .btn-ghost {
 			margin: 3%;
 		}
 		.btn-circle:first-child {
 			float: left;
 		}
 		.btn-circle:last-child {
-			margin-right: @baseiconsize;
+			float: right;
+		}
+		/* ghost button to balance the menu when the first button is floated left */
+		.btn-ghost {
+			.opaque(0.0);
+			height: @buttonsize;
+			width: @buttonsize;
+			display: inline-block;
+			float: right;
 		}
 	}
-
 
 }
 
@@ -86,8 +110,12 @@ body {
 }
 
 .circular(@radius) {
+	.rounded-corners(@radius);
 	width: (@radius);
 	height: (@radius);
+}
+
+.rounded-corners(@radius) {
 	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	-ms-border-radius: @radius;
