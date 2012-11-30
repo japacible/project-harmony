@@ -3,34 +3,31 @@
 CSS style sheet with Less syntax for the Project Harmony augmented reality user interface
 */
 
-@buttonsize: 80px;
-@iconsize: 40pt;
+@import "font-awesome.less"; /* get awesome icons */
 
-@color1_r: 172;
-@color1_g: 227;
-@color1_b: 255;
+@buttonsize: 80px; /* size of on-screen elements */
+@iconsize: 40pt; /* size of button icons */
 
-@import "font-awesome.less";
+/* A light blue.  The primary color of our theme. */
+@themecolor1: #ACE3FF;
+
+/* A darker blue.  The secondary color of our theme. */
+@themecolor2: #2F96B4;
+
 
 body {
 	margin: 0;
 }
 
-#background {
-	img {
-	}
-}
-
 #overlay {
 	.fullscreen;
-	height: 25%;
     position: fixed;
 	bottom: 0;
 	left: 0;
 
 	.glass {
 		.fullscreen;
-		.opaque(0.1);
+		.opaque(0.1, @themecolor1);
 	}
 
 	/* all screens are hidden by default */
@@ -38,7 +35,7 @@ body {
 		.fullscreen;
 		.transition_screen;
 		position: absolute;
-		bottom: -100%;
+		bottom: -200%;
 	}
 	/* display this screen instead of hiding it */
 	.displaying {
@@ -46,23 +43,10 @@ body {
 		bottom: 0%;
 	}
 
-	.notification {
-		.rounded-corners(@buttonsize);
-		.opaque(0.4);
-		height: @buttonsize;
-		overflow: hidden;
-		display: inline-block;
-		padding: 20px;
-
-		span {
-			padding-top: 10px;
-			font-size: (@iconsize/2);
-		}
-	}
-
+	/* defines a standard button */
 	.btn-circle {
 		.circular(@buttonsize);
-		.opaque(0.3);
+		.opaque(0.3, @themecolor1);
 		overflow: hidden;
 		display: inline-block;
 
@@ -70,16 +54,38 @@ body {
 			.fullscreen;
 			padding-top: 10px;
 			font-size: @iconsize;
+			i {
+				.opacity(0.8);
+			}
 		}
 		span:hover {
-			.opaque(0.6);
+			.opaque(0.8, @themecolor1);
+			i {
+				.opacity(0.9);
+			}
+		}
+
+	}
+	/* if a button is toggled, make it visually pop. */
+	.btn-toggled {
+		.opaque(0.8, darken(@themecolor1, 30%));
+		span:hover {
+			.opaque(0.8, darken(@themecolor1, 10%));
+		}
+		span i {
+			.opacity(1.0);
 		}
 	}
-	.btn-menu {
+
+	.menu-position(@bottom) {
 		position: absolute;
-		bottom: 0;
 		width: 100%;
 		text-align: center;
+		bottom: @bottom;
+	}
+
+	.btn-menu {
+		.menu-position(0);
 
 		.btn-circle, .btn-ghost {
 			margin: 3%;
@@ -90,9 +96,9 @@ body {
 		.btn-circle:last-child {
 			float: right;
 		}
-		/* ghost button to balance the menu when the first button is floated left */
+		/* ghost button to balance the menu when end buttons are floated. */
 		.btn-ghost {
-			.opaque(0.0);
+			.opaque(0.0, @themecolor1);
 			height: @buttonsize;
 			width: @buttonsize;
 			display: inline-block;
@@ -100,6 +106,23 @@ body {
 		}
 	}
 
+	/* Feedback notifications. */
+	.note-menu {
+		.menu-position((@buttonsize*2));
+	}
+	.notification {
+		.rounded-corners(@buttonsize);
+		.opaque(0.6, @themecolor1);
+		height: @buttonsize;
+		display: inline-block;
+		overflow: hidden;
+
+		span {
+			display: inline-block;
+			padding: 24px;
+			font-size: (@iconsize/2);
+		}
+	}
 }
 
 .fullscreen() {
@@ -123,13 +146,13 @@ body {
 	border-radius: @radius;
 }
 
-.opaque(@ratio) {
-	background: rgba(@color1_r,@color1_g,@color1_b,@ratio);
+.opaque(@ratio, @color) {
+	background: rgba(red(@color),green(@color),blue(@color),@ratio);
 }
 
 .opacity(@ratio) {
 	/* IE 9, 8, 7, 6, 5 */
-	@alpha: (@ratio * 100);
+	@alpha: (@ratio*100);
 	filter: alpha(opacity=@alpha);
 	/* Older than Firefox 0.9 */
 	-moz-opacity: @ratio;

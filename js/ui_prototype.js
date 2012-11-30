@@ -4,9 +4,18 @@ $(document).ready(function() {
 
 	// prep main screen buttons
 	$('#playback-btn').click(function() { changeScreenTo('screen-playback'); });
-	$('#friends-btn').click(function(){ alert('clicked'); });
-	$('#record-btn').click(function(){ alert('clicked'); });
-	$('#feedback-btn').click(function(){ alert('clicked'); });
+	$('#friends-btn').click(function(){
+		toggleButton(this);
+		toggleFriendsMode();
+	});
+	$('#record-btn').click(function(){
+		toggleButton(this);
+		toggleRecordMode();
+	});
+	$('#feedback-btn').click(function(){
+		toggleButton(this);
+		toggleFeedbackMode();
+	});
 	$('#exit-btn').click(function() { window.location.href = 'index.html#prototype' });
 
 
@@ -14,10 +23,12 @@ $(document).ready(function() {
 	$('#backmain-btn').click(function() { changeScreenTo('screen-main'); });
 	$('#previousvideo-btn').click(function() { alert('clicked'); });
 	$('#rewind-btn').click(function() { alert('clicked'); });
-	$('#play-btn').click(function() { flipPlayButton(this) });
+	$('#play-btn').click(function() {
+		toggleButton(this);
+		togglePlayButton(this)
+	 });
 	$('#fastforward-btn').click(function() { alert('clicked'); });
 	$('#nextvideo-btn').click(function() { alert('clicked'); });
-
 });
 
 
@@ -31,9 +42,16 @@ function changeScreenTo(screenName) {
 }
 
 
+function toggleButton(button) {
+	var btn = $(button).parent();
+	if (btn.hasClass('btn-toggled')) {
+		btn.removeClass('btn-toggled');
+	} else {
+		btn.addClass('btn-toggled');
+	}
+}
 
-
-function flipPlayButton(button) {
+function togglePlayButton(button) {
 	var icon = $(button).find('i');
 	var state = icon.attr('class');
 	if (state == 'icon-play') {
