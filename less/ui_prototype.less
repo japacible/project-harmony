@@ -5,7 +5,7 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 @import "font-awesome.less"; /* get awesome icons */
 
-@buttonsize: 80px; /* size of on-screen elements */
+@buttonsize: 100px; /* size of on-screen elements */
 @iconsize: 40pt; /* size of button icons */
 
 /* A light blue.  The primary color of our theme. */
@@ -24,6 +24,7 @@ body {
     position: fixed;
 	bottom: 0;
 	left: 0;
+	font-family: sans-serif;
 
 	.glass {
 		.fullscreen;
@@ -36,65 +37,82 @@ body {
 		.transition_screen;
 		position: absolute;
 		bottom: -200%;
-	}
-	/* display this screen instead of hiding it */
-	.displaying {
-		.fullscreen;
-		bottom: 0%;
+		/* display this screen instead of hiding it */
+		&.displaying {
+			.fullscreen;
+			bottom: 0%;
+		}
 	}
 
 	/* defines a standard button */
 	.btn-circle {
 		.circular(@buttonsize);
 		.opaque(0.3, @themecolor1);
+		margin: 0;
 		overflow: hidden;
-		display: inline-block;
+		display: block;
+		cursor: pointer;
 
 		span {
 			.fullscreen;
-			padding-top: 10px;
-			font-size: @iconsize;
+			margin: 0;
+			padding-top: 20px;
+
 			i {
 				.opacity(0.8);
+				font-size: @iconsize;
 			}
 		}
-		span:hover {
-			.opaque(0.8, @themecolor1);
-			i {
-				.opacity(0.9);
+		&:hover {
+			span {
+				.opaque(0.8, @themecolor1);
+				i {
+					.opacity(0.9);
+				}
 			}
 		}
 
-	}
-	/* if a button is toggled, make it visually pop. */
-	.btn-toggled {
-		.opaque(0.8, darken(@themecolor1, 30%));
-		span:hover {
-			.opaque(0.8, darken(@themecolor1, 10%));
+		/* if a button is toggled, make it visually pop. */
+		&.btn-toggled {
+			.opaque(0.8, darken(@themecolor1, 30%));
+			&:hover {
+				span {
+					.opaque(0.8, darken(@themecolor1, 10%));
+				}
+			}
+			span i {
+				.opacity(1.0);
+			}
 		}
-		span i {
-			.opacity(1.0);
-		}
 	}
-
-	.menu-position(@bottom) {
-		position: absolute;
-		width: 100%;
+	.btn-label {
 		text-align: center;
-		bottom: @bottom;
+		position: relative;
+		width: auto;
+		top: -(@buttonsize - 10px);
+		pointer-events: none;
+		cursor: default;
+
+		&.invisible {
+			top: 0;
+		}
 	}
 
 	.btn-menu {
 		.menu-position(0);
 
-		.btn-circle, .btn-ghost {
-			margin: 3%;
-		}
-		.btn-circle:first-child {
-			float: left;
-		}
-		.btn-circle:last-child {
-			float: right;
+		> span {
+			height: @buttonsize;
+			width: @buttonsize;
+			margin: 2%;
+			overflow: hidden;
+			display: inline-block;
+			&:first-child {
+				float: left;
+			}
+			&:last-child {
+				float: right;
+			}
 		}
 		/* ghost button to balance the menu when end buttons are floated. */
 		.btn-ghost {
@@ -108,7 +126,7 @@ body {
 
 	/* Feedback notifications. */
 	.note-menu {
-		.menu-position((@buttonsize*2));
+		.menu-position((@buttonsize*3/2));
 	}
 	/* Notifications are hidden by default */
 	.notification {
@@ -122,13 +140,13 @@ body {
 
 		span {
 			display: inline-block;
-			padding: 24px;
+			padding: 32px;
 			font-size: (@iconsize/2);
 			white-space: nowrap;
 		}
-	}
-	.invisible {
-		width: 0;
+		&.invisible {
+			width: 0;
+		}
 	}
 }
 
@@ -137,6 +155,13 @@ body {
 	width: 100%;
 	display: block;
 	margin: 0;
+}
+
+.menu-position(@bottom) {
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: @bottom;
 }
 
 .circular(@radius) {

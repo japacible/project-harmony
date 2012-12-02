@@ -8,6 +8,11 @@ var currentFrame = 0;
 
 $(document).ready(function() {
 
+	var toggleLabel = function() {
+		$(this).find('.btn-label').toggleClass('invisible', 200);
+	}
+	$('.btn-circle').parent().hover(toggleLabel, toggleLabel);
+
 	// prep main screen buttons
 	$('#playback-btn').click(function() { changeScreenTo('screen-playback'); });
 	$('#friends-btn').click(function(){
@@ -108,6 +113,7 @@ function changeScreenTo(screenName) {
 
 function toggleButton(button, onCallback, offCallback, args) {
 	var btn = $(button).parent();
+	console.log(btn.label);
 	if (btn.hasClass('btn-toggled')) {
 		btn.removeClass('btn-toggled');
 		if (offCallback) { offCallback(args); }
