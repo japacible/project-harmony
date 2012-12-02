@@ -5,7 +5,7 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 @import "font-awesome.less"; /* get awesome icons */
 
-@buttonsize: 100px; /* size of on-screen elements */
+@buttonsize: 120px; /* size of on-screen elements */
 @iconsize: 40pt; /* size of button icons */
 
 /* A light blue.  The primary color of our theme. */
@@ -17,6 +17,10 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 body {
 	margin: 0;
+}
+
+#background img {
+	height: 1000px;
 }
 
 #overlay {
@@ -47,7 +51,7 @@ body {
 	/* defines a standard button */
 	.btn-circle {
 		.circular(@buttonsize);
-		.opaque(0.3, @themecolor1);
+		.opaque(0.5, darken(@themecolor1, 10%));
 		margin: 0;
 		overflow: hidden;
 		display: block;
@@ -56,7 +60,7 @@ body {
 		span {
 			.fullscreen;
 			margin: 0;
-			padding-top: 20px;
+			padding-top: 30px;
 
 			i {
 				.opacity(0.8);
@@ -65,19 +69,22 @@ body {
 		}
 		&:hover {
 			span {
-				.opaque(0.8, @themecolor1);
+				.opaque(0.8, darken(@themecolor1, 20%));
 				i {
-					.opacity(0.9);
+					.opacity(0.0);
 				}
 			}
 		}
 
 		/* if a button is toggled, make it visually pop. */
 		&.btn-toggled {
-			.opaque(0.8, darken(@themecolor1, 30%));
+			.opaque(0.7, darken(@themecolor1, 50%));
 			&:hover {
 				span {
-					.opaque(0.8, darken(@themecolor1, 10%));
+					.opaque(0.8, darken(@themecolor1, 30%));
+					i {
+						.opacity(0.0);
+					}
 				}
 			}
 			span i {
@@ -89,9 +96,11 @@ body {
 		text-align: center;
 		position: relative;
 		width: auto;
-		top: -(@buttonsize - 10px);
+		top: -(@buttonsize - 44px);
 		pointer-events: none;
 		cursor: default;
+		font-size: 18pt;
+		font-weight: bold;
 
 		&.invisible {
 			top: 0;
@@ -104,7 +113,7 @@ body {
 		> span {
 			height: @buttonsize;
 			width: @buttonsize;
-			margin: 2%;
+			margin: 1%;
 			overflow: hidden;
 			display: inline-block;
 			&:first-child {
@@ -131,7 +140,7 @@ body {
 	/* Notifications are hidden by default */
 	.notification {
 		.rounded-corners(@buttonsize);
-		.opaque(0.6, darken(@themecolor1, 30%));
+		.opaque(0.6, darken(@themecolor1, 40%));
 		height: @buttonsize;
 		width: auto;
 		display: inline-block;

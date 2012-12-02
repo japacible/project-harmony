@@ -113,7 +113,6 @@ function changeScreenTo(screenName) {
 
 function toggleButton(button, onCallback, offCallback, args) {
 	var btn = $(button).parent();
-	console.log(btn.label);
 	if (btn.hasClass('btn-toggled')) {
 		btn.removeClass('btn-toggled');
 		if (offCallback) { offCallback(args); }
