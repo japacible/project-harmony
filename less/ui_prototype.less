@@ -110,18 +110,25 @@ body {
 	.note-menu {
 		.menu-position((@buttonsize*2));
 	}
+	/* Notifications are hidden by default */
 	.notification {
 		.rounded-corners(@buttonsize);
-		.opaque(0.6, @themecolor1);
+		.opaque(0.6, darken(@themecolor1, 30%));
 		height: @buttonsize;
+		width: auto;
 		display: inline-block;
 		overflow: hidden;
+		cursor: default;
 
 		span {
 			display: inline-block;
 			padding: 24px;
 			font-size: (@iconsize/2);
+			white-space: nowrap;
 		}
+	}
+	.invisible {
+		width: 0;
 	}
 }
 
