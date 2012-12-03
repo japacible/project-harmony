@@ -5,8 +5,9 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 @import "font-awesome.less"; /* get awesome icons */
 
-@buttonsize: 120px; /* size of on-screen elements */
-@iconsize: 40pt; /* size of button icons */
+@buttonsize: 110px; /* size of on-screen elements */
+@iconsize: 50pt; /* size of button icons */
+@videosize: 200px;
 
 /* A light blue.  The primary color of our theme. */
 @themecolor1: #ACE3FF;
@@ -33,6 +34,7 @@ body {
 	.glass {
 		.fullscreen;
 		.opaque(0.1, @themecolor1);
+		pointer-events: none;
 	}
 
 	/* all screens are hidden by default */
@@ -51,7 +53,7 @@ body {
 	/* defines a standard button */
 	.btn-circle {
 		.circular(@buttonsize);
-		.opaque(0.5, darken(@themecolor1, 10%));
+		.opaque(0.4, darken(@themecolor1, 10%));
 		margin: 0;
 		overflow: hidden;
 		display: block;
@@ -60,7 +62,7 @@ body {
 		span {
 			.fullscreen;
 			margin: 0;
-			padding-top: 30px;
+			padding-top: 20px;
 
 			i {
 				.opacity(0.8);
@@ -78,7 +80,7 @@ body {
 
 		/* if a button is toggled, make it visually pop. */
 		&.btn-toggled {
-			.opaque(0.7, darken(@themecolor1, 50%));
+			.opaque(0.8, darken(@themecolor1, 40%));
 			&:hover {
 				span {
 					.opaque(0.8, darken(@themecolor1, 30%));
@@ -99,7 +101,7 @@ body {
 		top: -(@buttonsize - 44px);
 		pointer-events: none;
 		cursor: default;
-		font-size: 18pt;
+		font-size: 16pt;
 		font-weight: bold;
 
 		&.invisible {
@@ -140,7 +142,7 @@ body {
 	/* Notifications are hidden by default */
 	.notification {
 		.rounded-corners(@buttonsize);
-		.opaque(0.6, darken(@themecolor1, 40%));
+		.opaque(0.8, darken(@themecolor1, 40%));
 		height: @buttonsize;
 		width: auto;
 		display: inline-block;
@@ -149,12 +151,24 @@ body {
 
 		span {
 			display: inline-block;
-			padding: 32px;
+			padding: 35px;
 			font-size: (@iconsize/2);
 			white-space: nowrap;
 		}
 		&.invisible {
 			width: 0;
+		}
+	}
+
+	#video-carousel {
+		.video {
+			display: inline-block;
+		}
+		video {
+			height: @videosize;
+		}
+		.selectedVideo video {
+			.fullscreen;
 		}
 	}
 }
