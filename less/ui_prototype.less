@@ -18,10 +18,59 @@ CSS style sheet with Less syntax for the Project Harmony augmented reality user 
 
 body {
 	margin: 0;
+	/* Start by setting display:none to make this hidden.
+	   Then we position it in relation to the viewport window
+	   with position:fixed. Width, height, top and left speak
+	   speak for themselves. Background we set to 80% white with
+	   our animation centered, and no-repeating */
+	.modal {
+		display:    none;
+		position:   fixed;
+		z-index:    1000;
+		top:        0;
+		left:       0;
+		height:     100%;
+		width:      100%;
+		background: rgba( 255, 255, 255, .8 ) 
+					50% 50% 
+					no-repeat;
+	}
+
+	/* When the body has the loading class, we turn
+	   the scrollbar off with overflow:hidden */
+	&.loading {
+		overflow: hidden;   
+	}
+
+	/* Anytime the body has the loading class, our
+	   modal element will be visible */
+	&.loading .modal {
+		display: table;
+		div {
+			margin-top: 40px;
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+			font-size: 30pt;
+			font-weight: bold;
+		}
+	}
 }
 
-#background img {
-	height: 1000px;
+#background {
+	position:relative;
+	background-color: black;
+
+	img {
+		height: 1000px;
+		display: block;
+		position: absolute;
+		z-index: 1;
+
+		.active {
+			z-index:3
+		}
+	}
 }
 
 #overlay {
@@ -30,6 +79,7 @@ body {
 	bottom: 0;
 	left: 0;
 	font-family: sans-serif;
+	z-index: 4;
 
 	.glass {
 		.fullscreen;

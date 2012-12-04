@@ -1,12 +1,14 @@
 
 (function() {
-	var FRAME_COUNT = 10;
-	var FRAME_TIMEOUT = 2000; // in ms
+	var FRAME_COUNT = 53;
+	var FRAME_TIMEOUT = 1000; // in ms
 	var FRAME_FEEDBACK_LIST = new Array(FRAME_COUNT);
 
-	var currentFrame = 0;
+	var currentFrame = -1;
+	var startSimulation = false;
 
-	$(document).ready(function() {
+	$(window).load(function() {
+		console.log("WINDOW");
 
 		var toggleLabel = function() {
 			$(this).find('.btn-label').toggleClass('invisible', 200);
@@ -18,26 +20,24 @@
 		$('#friends-btn').click(function(){
 			toggleButton(this);
 			toggleFriendsMode();
+			startSimulation = true;
+			// start the conversation screen stop-motion simulation
+			nextSimulationFrame();
 		});
 		$('#record-btn').click(function(){
 			toggleButton(this);
 			toggleRecordMode();
+			startSimulation = true;
+			// start the conversation screen stop-motion simulation
+			nextSimulationFrame();
 		});
 		$('#feedback-btn').click(function(){
 			toggleButton(this, showFeedback, hideFeedback);
+			startSimulation = true;
+			// start the conversation screen stop-motion simulation
+			nextSimulationFrame();
 		});
 		$('#exit-btn').click(function() { window.location.href = 'index.html#prototype' });
-
-
-
-		// prep feedback list
-		var fillFeedbackList = function(text, frameList) {
-			for (var i=0; i<frameList.length; i++) {
-				FRAME_FEEDBACK_LIST[frameList[i]] = text;
-			}
-		}
-		fillFeedbackList("Speak Slower", [2,3,4,5]);
-		fillFeedbackList("Derp Less", [6,7,8]);
 
 
 		// prep playback screen buttons
@@ -50,26 +50,66 @@
 		$('#fastforward-btn').click(function() { stepForward(); });
 		$('#nextvideo-btn').click(function() { alert('clicked'); });
 
-
-		// prep video carousel
-		$('#video-carousel').waterwheelCarousel({
-
-		});
-
-
-		// start the conversation screen stop-motion simulation
-		nextSimulationFrame();
+		cycleImage();
+		hideSpinner();
 	});
 
-	function nextSimulationFrame() {
 
-		console.log(currentFrame);
+	$(document).ready(function() {
+		console.log("DOCUMENT");
+		showSpinner();
+		injectImages();
+
+		// prep feedback list
+		var fillFeedbackList = function(text, start, stop) {
+			for (var i=start; i<stop; i++) {
+				FRAME_FEEDBACK_LIST[i] = text;
+			}
+		}
+		fillFeedbackList("Introduce Yourself", 9, 12);
+		fillFeedbackList("Keep Eye Contact", 22, 27);
+		fillFeedbackList("Change the Subject", 32, 36);
+		fillFeedbackList("Stop Talking", 46, 51);
+	});
+
+	function showSpinner() {
+		$('body').addClass("loading"); 
+	}
+	function hideSpinner() {
+		$('body').removeClass("loading"); 
+	}
+
+	function injectImages() {
+		var background = $('#background');
+		for (var i=0; i<FRAME_COUNT; i++) {
+			var frameNum = (""+(1000 + i)).slice(1);
+			console.log(frameNum);
+			var img = $('<img/>', {
+				'id' : "frame_"+i,
+				'src' : "images/frames/frame_"+(frameNum)+".jpg"
+			});
+			if (i==0) {
+				img.addClass('active');
+			}
+			background.append(img);
+		}
+	}
+
+	function nextSimulationFrame() {
+		if (!startSimulation) {
+			return;
+		}
+
+		console.log("frame "+currentFrame);
 
 		// increment the frame count
-		var oldFeedback = FRAME_FEEDBACK_LIST[currentFrame];
+		var oldFrame = currentFrame;
 		currentFrame = (currentFrame < FRAME_COUNT-1 ? currentFrame + 1 : 0);
-		var feedbackText = FRAME_FEEDBACK_LIST[currentFrame];
 
+		setTimeout(cycleImage, 0);
+
+		var oldFeedback = FRAME_FEEDBACK_LIST[oldFrame];
+		var feedbackText = FRAME_FEEDBACK_LIST[currentFrame];
 		var feedbackArea = $('#feedback');
 		// the feedback text changed!
 		if (feedbackText != oldFeedback) {
@@ -89,6 +129,16 @@
 		// schedule the next frame change
 		$(document.body).delay(FRAME_TIMEOUT).show(1, nextSimulationFrame);
 	}
+
+	function cycleImage(){
+		var $active = $('#background .active');
+		var $next = ($active.next().length > 0) ? $active.next() : $('#background img:first');
+		$next.css('z-index',2);//move the next image up the pile
+		$active.fadeOut(500,function() {//fade out the top image
+			$active.css('z-index',1).show().removeClass('active');//reset the z-index and unhide the image
+			$next.css('z-index',3).addClass('active');//make the next image the top one
+		});
+    }
 
 	function changeScreenTo(screenName) {
 		var oldScreen = $('.displaying');
@@ -154,4 +204,6 @@
 	function stepBackward() {
 		$('.selectedVideo video').get(0).currentTime -= 8;
 	}
+
+
 })();
